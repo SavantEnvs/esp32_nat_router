@@ -1,0 +1,9 @@
+project: savantenvs/esp32_nat_router
+target: fuzz_pcap_ringbuf
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar   # accumulation (REQUIRED)
+  - file://mayhem/fuzz_pcap_ringbuf/testsuite                                          # per-target starter seeds
+cmds:
+  - cmd: /mayhem/fuzz_pcap_ringbuf
+    libfuzzer: true
+    timeout: 5

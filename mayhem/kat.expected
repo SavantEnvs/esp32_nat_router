@@ -1,0 +1,17 @@
+parse_ip 192.168.1.0/24 ok=1 ip=c0a80100 mask=ffffff00
+parse_ip any ok=1 ip=00000000 mask=00000000
+parse_ip 10.1.2.3 ok=1 ip=0a010203 mask=ffffffff
+parse_ip 300.1.1.1/8 ok=0
+parse_name from_ap=3 TO_ESP=0 bogus=-1
+format 172.16.0.0/12
+acl port80 result=02
+acl port81 result=ff
+acl hit_count=1 denied=1
+hook deny err=0 freed=1
+mss clamp 1460->1400 csum_valid=1
+mss keep 1200->1200 csum_valid=1
+ttl override ttl=65 ip_csum_valid=1 sta_bytes_sent=58
+pmtu icmp len=70 type=3 code=4 mtu=40 icmp_csum_valid=1 dst=192.168.4.2
+killswitch err=0 freed=1
+pcap captured=1 ringbuf_read=74 incl_len=58 orig_len=58 first_mac=01
+ringbuf r1=4 w2=1 w3=0 r2=8 data=56123456 dropped=1

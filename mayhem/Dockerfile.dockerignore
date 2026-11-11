@@ -1,0 +1,15 @@
+# Per-Dockerfile ignore for `docker build -f mayhem/Dockerfile .`; takes precedence over a root
+# .dockerignore. .git stays in the context: the image holds the full history of the mayhem branch.
+# Only untracked/build clutter is excluded; every tracked file (incl. mayhem/) stays so /mayhem
+# matches the commit.
+build
+build_*
+.pio*
+.vscode
+managed_components
+dependencies.lock
+.gemini
+.mcp.json
+**/__pycache__
+sdkconfig
+sdkconfig.old

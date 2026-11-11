@@ -1,0 +1,9 @@
+project: savantenvs/esp32_nat_router
+target: fuzz_netif_hooks
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar   # accumulation (REQUIRED)
+  - file://mayhem/fuzz_netif_hooks/testsuite                                          # per-target starter seeds
+cmds:
+  - cmd: /mayhem/fuzz_netif_hooks
+    libfuzzer: true
+    timeout: 5

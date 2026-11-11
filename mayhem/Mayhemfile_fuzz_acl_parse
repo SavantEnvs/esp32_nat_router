@@ -1,0 +1,9 @@
+project: savantenvs/esp32_nat_router
+target: fuzz_acl_parse
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar   # accumulation (REQUIRED)
+  - file://mayhem/fuzz_acl_parse/testsuite                                          # per-target starter seeds
+cmds:
+  - cmd: /mayhem/fuzz_acl_parse
+    libfuzzer: true
+    timeout: 5
